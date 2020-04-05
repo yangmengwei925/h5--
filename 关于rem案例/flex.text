@@ -1,0 +1,54 @@
+
+            display：flex;是给父元素设置的，用来显示子元素(只能控制下一级的子元素)
+            父元素设为弹性盒后子元素依然可以成为弹性盒
+            display:box 是老弹性盒；display:flex是新弹性盒
+
+            子元素在同一行之内显示，即使有溢出内容，也不会换行 （默认是横向排列） 
+            float、display:block不再生效
+
+            弹性盒父元素加的属性：
+              justify-content:控制子元素主轴对齐方式
+                center//居中对齐
+                flex-start  顶端对齐
+                flex-end  底端对齐
+                space-between 两端对齐【没有空隙】
+                space-around 两端对齐【两边距离是中间的一半 1/2】
+
+              
+              align-items: 控制子元素侧轴对齐方式
+                 center 侧轴居中
+                 flex-start顶端对齐 
+                 flex-end 底端对齐
+                 baseline  基线对齐
+                 Stretch(默认值) 默认把元素拉伸到适应容器 
+
+              排列方式:flex-direction: 注意:方向会改变轴向
+                    column 垂直排列 [子元素的方向就会发生改变]
+                    column-reverse  垂直翻转排列
+                    row  水平排列【默认值】
+                    row-reverse 水平翻转排列
+
+              多行弹性盒
+              Flex-wrap:wrap;控制子元素溢出内容是否换行显示【加给父元素】 
+                wrap表示换行   
+                nowrap表示不换行【默认值】
+                wrap-reverse【翻转换行】
+
+              flex-flow:复合属性 
+              是flex-direction和flex-wrap的复合属性，表示控制子元素的排列方式以及是否换行
+
+              <--------------------------------弹性盒子元素加的属性------------------------------------->
+              flex-grow:;默认值0，不参与分配,1平均分配，
+              如果一个项目的flex-grow属性为2，其他项目都为1占据的剩余空间将比其他项多一倍
+
+              flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+              flex-shrink:0不进行缩小比例，保持实际大小
+
+              flex-basis属性 它的默认值为auto，即项目的本来大小。
+
+              order属性
+              order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+
+              flex复合属性
+              flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+        

@@ -1,0 +1,31 @@
+<audio></audio>音频
+支持的格式：ogg mp3 wav
+<video></video>视频
+支持的格式：ogg mp4 webm
+
+controls：显示音频视频默认的控件
+loop:循环播放
+autoplay:自动播放
+currentTime:以s为单位返回从开始播放到现在所用的时间
+playbackRate:属性设置或返回音频/视频的当前播放速度
+
+canPlayType检测浏览器是否支持audio或video
+
+addTextTrack()	向音频添加新的文本轨道。
+
+fastSeek()	在音频播放器中指定播放时间。
+
+getStartDate()	返回新的 Date 对象，表示当前时间线偏移量。
+
+load()	重新加载音频元素。
+
+play()	开始播放音频。
+
+pause()	暂停当前播放的音频。
+
+
+事件：
+   timeupdate前播放发生改变
+   canplaythrough视频音频播放完成
+
+音频视频方法都一样

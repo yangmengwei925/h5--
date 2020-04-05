@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+
+        html{
+            font-size:100px;  
+            /* 1rem===100px 0.1rem==10px; */
+        }
+        .box{
+            width: 1rem;
+            height: 1rem;
+            background:orange;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="box"></div>
+    
+
+
+    <script>
+        
+        function Rem(){
+            var rem=0;
+            if(document.documentElement.clientWidth>=750){
+                document.documentElement.style.width=750+"px";
+                rem=375/7.5;
+                document.documentElement.style.fontSize=rem+"px";
+            }else if(document.documentElement.clientWidth<=320){
+                document.documentElement.style.width=320+"px";
+                rem=320/7.5;
+                document.documentElement.style.fontSize=rem+"px";
+            }else{
+                rem=document.documentElement.clientWidth/7.5;
+                document.documentElement.style.fontSize=rem+"px";
+                console.log(rem);
+            }
+        }
+        Rem();
+
+        window.onresize=function(){
+            Rem();
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 200px;
+            height: 200px;
+            margin:100px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            transition: all 2s;
+        }
+        .wrapper>div{
+            width: 198px;
+            height: 198px;
+            border:solid 1px #000;
+            font-size:60px;
+            text-align: center;
+            line-height: 198px;
+            position: absolute;
+            background:#000;
+            color: #fff;
+        }
+        .font{
+            transform: translateZ(100px);
+        }
+        .back{
+            transform: rotateX(180deg) translateZ(100px);
+        }
+        .right{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .left{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .top{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .bottom{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        .wrapper:hover{
+            transform: rotateX(360deg) translateX(500px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="font">1</div>
+        <div class="back">2</div>
+        <div class="right">3</div>
+        <div class="left">4</div>
+        <div class="top">5</div>
+        <div class="bottom">6</div>
+    </div>
+    
+
+    <script>
+        var wrapper=document.querySelector(".wrapper");
+
+        window.onload=function(){
+            wrapper.style.transform="rotateX(360deg) translateX(500px)";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 400px;
+            height: 400px;
+            margin:50px auto;
+            
+            position: relative;
+        }
+        .wrapper-inner{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: jiang .6s linear infinite;
+            animation-play-state:paused;
+        }
+
+        @keyframes jiang{
+            0%{
+                transform: rotate(360deg);
+            }
+        }
+        .wrapper-inner img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .btn{
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background:#fff;
+            text-align: center;
+            line-height: 160px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            cursor: pointer;
+            transform: translate(-50%,-50%);
+            
+        }
+        .btn span{
+            position: relative;
+        }
+        .btn::after{
+            content: "";
+            width: 80px;
+            height: 80px;
+            background:#fff;
+            position:absolute;
+            left:50%;
+            top:-10px;
+            transform: translateX(-50%) rotate(45deg);
+
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="wrapper">
+        <div class="wrapper-inner">
+            <img src="./images/timg.jpg" alt="">
+        </div>
+        <div class="btn">
+            <span style="z-index:22">开始抽奖</span>
+        </div>
+    </div>
+    
+
+    <script>
+        var btn=document.querySelector(".btn"),
+            wrapperInner=document.querySelector(".wrapper-inner");
+
+        btn.onclick=function(){
+            if(this.children[0].innerHTML=="开始抽奖"){
+                this.children[0].innerHTML="停止抽奖";
+                wrapperInner.style.animationPlayState="running";
+            }else{
+                this.children[0].innerHTML="开始抽奖";
+                wrapperInner.style.animationPlayState="paused";
+            }
+        }
+    </script>
+</body>
+</html>

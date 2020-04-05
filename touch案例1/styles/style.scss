@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+@import "./conmon.scss";
+
+@font-face{
+    font-family: "iconFont";
+    src:url(../font/iconfont.ttf);
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;
+}
+
+.state-award{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 999;
+    text-align: center;
+
+    .award{
+        width: 80%;
+        height: 50%;
+        background:red;
+        margin:0 auto;
+        
+    }
+
+    span{
+        font-size: 34px;
+        color:#fff;
+    }
+}
+
+header{
+    width: 100%;
+    height: pxrem(50px);
+    background: #961e0d;
+}
+
+main{
+    width: 100%;
+    flex:1;
+    background: #eee;
+    position: relative;
+
+    .main-scroll{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.menu-pic{
+    width: 100%;
+    
+
+    .menu-left{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:pxrem(-50px);
+        left:0;
+        z-index: 99;
+        background:rgba(0, 0, 0, .4);
+        padding-top:pxrem(50px);
+        box-sizing: content-box;
+        transform: translateX(-100%);
+        transition: .6s;
+    }
+    .menu-left.active{
+        transform: translateX(0%);
+    }
+
+    .menu-cen{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        left:0;
+        bottom:0;
+
+        a{
+            width: pxrem(80px);
+            height: pxrem(80px);
+            background: #999;
+        }
+    }
+
+    .menu-right{
+        width: 100%;
+        height: 60%;
+        position: absolute;
+        bottom: 0;
+        left:0;
+        z-index: 99;
+        background:rgba(0, 0, 0, .4);
+        transform: translateX(100%);
+        transition: .6s;
+    }
+    .menu-right.active{
+        transform: translateX(0%)
+    }
+}
+
+
+
+footer{
+    width:100%;
+    height: pxrem(55px);
+    border-top:solid 1px #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding:pxrem(4px) 0;
+    
+    a{
+        width: 20%;
+        text-align: center;
+        i{
+            font-family: "iconFont";
+            display: block;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+    }
+}

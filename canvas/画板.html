@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 600px;
+            height: 620px;
+            margin:10px auto;
+            padding-top: 10px;
+            border:solid 1px #ccc;
+        }
+        .wrapper div{
+            padding-bottom:10px;
+        }
+        canvas{
+            border-top:solid 1px #ccc;
+        }
+        .clearLine{
+            display:inline-block;
+            width: 20px;
+            height: 24px;
+            border:solid 1px #000;
+            border-top:6px solid #000;
+        }
+
+        .clearLine.active{
+            background:#000;
+            border-top-color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div>
+            <input type="color" id="color">
+            <input type="range" min="1" max="20" value="1" id="range">
+            <span class="clearLine"></span>
+            <button class="clear">清空</button>
+            <button class="save">保存</button>
+        </div>
+        <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+    
+
+    <script>
+
+        var canvas=$("#canvas"),
+            ctx=canvas.getContext("2d"),
+            colorValue="#000",
+            rangeValue=1;
+
+        $("#color").onchange=function(){
+            colorValue=this.value;
+        };
+
+        $("#range").onchange=function(){
+            rangeValue=this.value;
+        };
+
+        canvas.onmousedown=function(e){
+            var e=e || window.event;
+            var x=e.offsetX,
+                y=e.offsetY,
+                flag=$(".clearLine").classList.contains("active");
+
+            if(flag){
+               ctx.globalCompositeOperation="destination-out";
+            }
+            ctx.lineWidth=rangeValue;
+            ctx.strokeStyle=colorValue;
+            
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+
+            canvas.onmousemove=function(e){
+                var e=e || window.event;
+                var mx=e.offsetX,
+                    my=e.offsetY;
+                ctx.lineTo(mx,my);
+                ctx.stroke();
+            }
+        }
+
+        canvas.onmouseup=function(){
+            ctx.closePath();
+            this.onmousemove=null;
+        };
+
+        $(".clearLine").onclick=function(){
+            if(this.classList.contains("active")){
+                this.classList.remove("active");
+            }else{
+                this.classList.add("active");
+            }
+        };
+
+        $(".clear").onclick=function(){
+            ctx.clearRect(0,0,600,600);
+        };
+
+        $(".save").onclick=function(){
+            var src=canvas.toDataURL();//画布生成图片路径
+            var img=new Image();
+            img.src=src;
+            document.body.appendChild(img);
+            ctx.clearRect(0,0,600,600);
+        }
+        
+        function $(selector){
+            return typeof(selector)==="string"?document.querySelector(selector):selector;
+        }
+    </script>
+</body>
+</html>

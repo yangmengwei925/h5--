@@ -1,0 +1,42 @@
+new swiper("��Ԫ��",������(������ѡ));
+
+������{
+  autoplay:false|true,Ĭ�������ֲ�һ��
+  direction:horizontal"ˮƽ"|vertical"��ֱ"  �ֲ�����
+  loop:false|true �޷��ֲ�
+  autoplay:{
+  	delay:1000|�Զ�ʱ�� ms
+  }
+  slidesPerView:2//��ʾһ����ʾ����ͼƬ
+  slidesPerGroup:2//��ʾÿ��������
+  pagination{
+	el:��ҳ����Ԫ��,
+        clickable:false|true,�����ҳ�л��ֲ�
+  }
+
+  navigation:{
+  	nextEl:��һ�Ű�ťԪ��
+        prevEl:��һ�Ű�ťԪ��
+  }
+
+  on:注册事件，this指代Swiper实例。
+
+  slidechange  当前Slide切换时执行(activeIndex发生改变)
+
+  slideTo(ind,ms,回调函数)Swiper切换到指定slide。
+
+
+}
+
+�������ö��swiper����Ҫ����swiper-container�����,���֮����id��class��������
+
+
+//detail��wheelDelta
+  IE��Opera��Safari��Chrome:wheelDelta  wheelDeltaֻȡ��120������������ʾΪ���ϣ�������ʾ���¡�
+  Firefox:detail  detailֻȡ��3*/
+
+  //Firefoxʹ��addEventListener���ӹ����¼�
+  /*Firefoxע���¼�*/
+  /*if(document.addEventListener){
+      document.addEventListener('DOMMouseScroll',scrollFunc,false);
+  }

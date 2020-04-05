@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .audioWrap{
+            width: 64px;
+            height: 64px;
+            background: url(./img/icon.png) no-repeat -64px 0;
+            position: fixed;
+            right: 6px;
+            top: 6px;
+            animation: audioName 5s linear infinite;
+            animation-play-state: paused;
+        }
+        .audioWrap.stop{
+            background: url(./img/icon.png) no-repeat -128px 0;
+            animation-play-state: running;
+        }
+
+        @keyframes audioName{
+            0%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="audioPlay" class="audioWrap">
+        <audio src="./bg/Funny_short.mp3"></audio>
+    </div>
+    
+
+    <script>
+        var  audioPlay=document.querySelector("#audioPlay"),
+             audio=audioPlay.querySelector("audio");
+
+        audioPlay.onclick=function(){
+            if(this.classList.contains("stop")){
+                audio.pause();
+                this.classList.remove("stop");
+            }else{
+                audio.play();
+                this.classList.add("stop");
+            }
+        }
+    </script>
+</body>
+</html>

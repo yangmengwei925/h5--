@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+                <section>
+                    <div id="container_demo">
+                        <a class="hiddenanchor" id="toregister"></a> <a class="hiddenanchor" id="tologin"></a>
+                        <div id="wrapper">
+                            <div id="login" class="animate form">
+                                <form id="loginform">
+                                    <h1>登录</h1>
+                                    <p>
+                                        <label for="username" class="uname" data-icon="u"> 邮箱 </label>
+                                        <input id="email" type="text" placeholder="请输入邮箱" />
+                                    </p>
+                                    <p>
+                                        <label for="password" class="youpasswd" data-icon="p">
+                                            密码</label> <input id="password" type="password" placeholder="请输入密码" />
+                                    </p>
+                                    <p class="keeplogin">
+                                        <input type="checkbox" id="isRemberPwdId" /> <label for="loginkeeping">记住密码 </label>
+                                    </p>
+                                    <p class="keeplogin">
+                                        <input type="checkbox" id="isAutoLoginId" /> <label for="autologin">自动登录 </label>
+                                    </p>
+                                    <p class="login button">
+                                        <input type="button" value="登录" id="logInBtn" />
+                                    </p>
+                                    <p class="change_link">
+                                        没有账号? <a href="#toregister" class="to_register">前去注册</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    </div>
+        
+    <h3 id="title"></h3>
+
+
+    <script>
+
+        var storage=window.localStorage,
+            dataObj=JSON.parse(storage.getItem("dataLis")) || {};
+
+        function $(selector){
+            return (typeof selector)==="string"?document.querySelector(selector):selector;
+        };
+        
+        function autoLogin(){
+            if(dataObj.isRemberId=="YES"){
+              if(dataObj.isAutoId=="YES"){
+                $("#isAutoLoginId").checked=true;
+                alert(11);
+              }
+              $("#email").value=dataObj.userName;
+              $("#password").value=dataObj.password;
+              $("#isRemberPwdId").checked=true;
+            }else{
+                $("#email").value=dataObj.userName?dataObj.userName:"";
+                $("#isRemberPwdId").checked=false;
+            }
+        }
+
+        autoLogin();
+
+        $("#logInBtn").onclick=loginFn;
+
+        $("#isRemberPwdId").onclick=function(){
+            if(!this.checked){
+                $("#isAutoLoginId").checked=false;
+            }
+        }
+
+        $("#isAutoLoginId").onclick=function(){
+            if(this.checked){
+                $("#isRemberPwdId").checked=true; 
+            }
+        }
+
+        function loginFn(){
+            var user=$("#email").value,
+                pasd=$("#password").value;
+
+            if(user=="" || pasd==""){
+              alert("输入账号密码不能为空");
+              return;
+            };
+
+            if($("#isRemberPwdId").checked){
+                dataObj={
+                    userName:user,
+                    password:pasd,
+                    isRemberId:"YES"
+                };
+                if($("#isAutoLoginId").checked){
+                   dataObj.isAutoId="YES"
+                }
+            }else{
+                dataObj={
+                    userName:user,
+                    isRemberId:"NO"
+                };
+            }
+            storage.setItem("dataLis",JSON.stringify(dataObj));
+        }
+        
+    </script>
+        
+</body>
+</html>

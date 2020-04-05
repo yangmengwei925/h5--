@@ -1,0 +1,25 @@
+﻿文件域.files
+返回上传的文件对象
+
+{
+    size:文件大小 b字节 kb千字节 mb兆字节  1kb = 1024b  1mb = 1024kb
+    name:文件名称
+    type:文件类型
+    lastModified:文件创建时间
+
+}
+
+Filereader对象可以读取本地文件
+new FileReader()
+
+
+设置要上传的文件对象
+对象.readAsDataURL(本地文件对象)
+
+
+上传成功触发的方法
+对象.onload 
+
+上传结果
+对象.result 
+返回base64格式的字符串  

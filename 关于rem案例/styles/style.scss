@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+$baseNum-px:37.5px;//基准值
+
+//网页字体大小建议用px，元素大小用rem
+@function Torem($pxnum){
+    $baseNum-rem:$baseNum-px/1rem*1;//转换为rem
+    $pxnum:$pxnum/$baseNum-rem;//实际的尺寸除以基准值
+    @return $pxnum;
+};
+
+.box{
+    width:100%;
+    height:Torem(45px);
+    background:#000;
+}

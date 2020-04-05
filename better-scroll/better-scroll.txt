@@ -1,0 +1,47 @@
+1.引入js
+2.父元素的高度或宽度一定要小于子元素的宽度或高度
+    2.1 父元素要添加相对定位和overflow:hidden
+    2.2 只查找父元素下第一个子元素 忽略其他子元素
+横滚时计算子元素宽度
+3.实例化滚动条 new BScroll(父元素,配置项) (默认垂直滚动)
+
+常用配置项：
+{
+    scrollbar: false|true 显示滚动条
+    scrollY:true|false 垂直方向滚动
+    scrollX：false|true 水平方向滚动
+    probeType:0|1|2|3 滚动条探测指数 0不获取滚动位置不触发scroll事件 1滚动停止滚动时触发 2滚动过程触发 3实时触发
+}
+
+上拉加载更多.
+
+1.滚动事件 检测滚动位置 判断loading状态
+默认不激活
+BScroll实例对象.on('scroll',function(){
+    滚动触发的操作
+})
+BScroll实例对象.y 当前滚动y轴距离
+BScroll实例对象.x 当前滚动x轴距离
+BScroll实例对象.maxScrollY 最大滚动y轴距离
+BScroll实例对象.maxScrollX 最大滚动x轴距离
+
+2.滚动停止事件 回到初始状态
+BScroll实例对象.on('scrollEnd',function(){
+    滚动条停止滚动时触发操作
+})
+
+3.手指松开判断是否加载数据
+BScroll实例对象.on('touchEnd',function(){
+    滚动条停止滚动时触发操作
+})
+
+4.dom结构发生变化 刷新滚动条 重新计算滚动距离
+BScroll实例对象.refresh();
+
+// BScoll实例对象.scrollToElement(dom节点,运动时间,滚动条距当前节点x轴的距离,滚动条距当前节点y轴的距离)
+
+控制滚动位置
+   实例对象.scrollTo(x,y,time)
+      x：x轴的距离
+      y: y轴的距离
+      time:时间

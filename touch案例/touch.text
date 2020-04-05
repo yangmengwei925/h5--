@@ -1,0 +1,31 @@
+        pc端click事件在移动端中会发生300ms延迟问题。
+
+        touchstart(掌握)
+        当在屏幕上按下手指时触发
+
+        touchmove(掌握)
+        当在屏幕上移动手指时触发
+
+        touchend(掌握)
+        当在屏幕上抬起手指时触发
+
+        touchcancel(了解)
+        弹出信息出现...会取消当前的touch操作
+
+        touches: 当前屏幕上所有触摸点的列表;
+          touchLis:{
+            0==>touch对象
+            length:
+          }
+        e.touches[0];
+        e.touches.0
+
+        访问对象两种方式：
+          1.对象.key
+          2.对象【key】
+        注意: 点的方式不灵活部分请况下没法使用，而中括号的形式在任何时候都可以使用
+
+        changedTouches:涉及当前(引发)事件的触摸点的列表,可以拿到最后一个离开屏幕的手指的接触点
+
+        event.preventDefault() 取消默认行为
+        e.stopPropagation()  取消冒泡

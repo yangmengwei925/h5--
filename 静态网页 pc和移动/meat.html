@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            list-style: none
+        }
+
+        .box{
+            width:500px;
+            height: 300px;
+            background:green;
+            margin: 0 auto;
+        }
+
+        /* 表示只在750一下显示 */
+        @media screen and (max-width:750px){
+            .box{
+                width:300px;
+                height: 100px;
+                background:orange;
+                margin: 0 auto;
+            }
+        }
+
+        /* 在最小320屏幕下和最大750下 */
+        /* @media screen and (max-width:750px) and (min-width:320px){
+            .box{
+                width:100px;
+                height: 100px;
+                background:pink;
+                margin: 0 auto;
+            }
+        } */
+    </style>
+</head>
+<body>
+
+
+    <div class="box"></div>
+
+    <!-- 
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome
+        
+        <meta name="format-detection" content="telephone=no,email=no,address=no">
+        name=“format-detection” 它是用来检测html里的一些格式的
+   	    telephone=no就禁止了把数字转化为拨号链接！
+        email=no禁止作为邮箱地址！
+        address=no禁止跳转至地图！
+        以上默认都是开启(yes)
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        width=device-width用于获取设备的宽度  
+        initial-scale 自动缩放为原来的1倍
+        maximum-scale最大为原来的1倍缩放
+        minimum-scale 最小为原来的1倍
+        user-scalable=no 禁止用户对整个页面进行缩放
+     -->
+
+
+     <!-- 
+        媒体查询响应式
+        在某种设备的某种尺寸下执行不同的样式代码叫做媒体查询--响应式布局(PC/ipad/移动端)
+
+        语法:
+        @media 媒体类型
+
+        媒体类型：
+            screen[所有浏览器、屏幕]  
+            print[打印机] 
+            tv[电视机] 
+            all[支持所有设备] 
+            handheld[手持设备]
+
+        关键词：[and和 not排除 only唯一]
+
+        媒体特性： 
+            (min-width:320px) 最小320  
+            (max-width:320px) 最大320  
+            (device-width:320px)设备的宽度为320px
+            (width:320px)可视窗口的宽度为320px
+      -->
+    
+</body>
+</html>

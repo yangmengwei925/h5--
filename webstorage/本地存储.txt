@@ -1,0 +1,30 @@
+﻿本地存储
+    存储用户的一些临时数据
+
+webStorage：
+	localStorage -> 本地永久存储
+	sessionStorage -> 只存储一次性浏览器会话记录 浏览器关闭清除所有值
+	只能用于客户端	
+	浏览器定义了一些方法可以直接使用
+	html5新增的API 
+
+
+	Storage = localStorage || sessionStorage;
+	添加属性 属性值默认转为字符串 *
+	用内置的方法查找：找不到返回null *
+    用点或中括号[]: 找不到返回undefined *
+	Storage.setItem(key,value)  Storage['key'] = value    Storage.key = value
+	获取值 返回对应value
+	Storage.getItem(key)  Storage['key']    Storage.key
+	删除值
+	Storage.removeItem(key)
+	删除全部
+	Storage.clear()
+	获取key 返回下标为index的key
+	Storage.key(index)
+
+
+
+cookies
+	可以用于客户端也可以用于服务端
+	没有，自己封装 jquery.cookies.js 

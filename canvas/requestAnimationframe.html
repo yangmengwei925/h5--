@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0
+        }
+
+        .line{
+            width: 0;
+            height: 10px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="line"></div>
+    
+    <script>
+        var line=document.querySelector(".line"),
+            endWidth=document.documentElement.clientWidth || document.body.clientWidth,
+            init=0;
+        //requestAnimationFrame控制动画
+        //1.经过浏览器优化，动画更流畅
+
+        //2.窗口没激活时，动画将停止，省计算资源
+
+        //3.更省电，尤其是对移动终端
+        function move(){
+            init++;
+            if(init<endWidth){
+                line.style.width=init+"px";
+                requestAnimationFrame(move);//启动
+            }else{
+                cancelAnimationFrame(move);//停止
+            }
+        }
+
+        move();
+
+
+    </script>
+</body>
+</html>

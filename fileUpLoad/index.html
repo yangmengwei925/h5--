@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .item-count{
+            padding: 0 29px;
+            color: #b3b2b2;
+        }
+        .item-count span{
+            margin: 0 6px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+
+        .wrap-dialog{
+		  width: 350px;
+		  background: #fff;
+		  box-shadow: 1px 1px 10px #333;
+		  border-radius: 10px;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  margin-left: -175px;
+		  margin-top: -100px;
+		  z-index: 9999;
+		  cursor: move;
+		}
+		.wrap-dialog h3{
+		  line-height: 42px;
+		  text-indent: 10px;
+		  font-weight: normal;
+		  font-size: 16px;
+		}
+		.wrap-dialog h3 .close{
+		  float: right;
+		  margin-right: 10px;
+		  font-size: 26px;
+		  cursor: pointer;
+		}
+		.wrap-dialog h3 .close:hover{
+			color: red;
+		}
+		.wrap-dialog p{
+			text-align: center;
+			font-size: 16px;
+			margin: 20px 0 0 0;
+		}
+
+		.wrap-dialog div{
+			display: flex;
+		}
+
+		.wrap-dialog div button{
+			margin: 20px auto;
+			padding: 4px 15px;
+			cursor: pointer;
+		}
+		
+		.mask{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			left: 0;
+			top: 0;
+			background: rgba(0, 0, 0, .4);
+			z-index: 999;
+		}
+
+		/* .addupload{
+			width: 100px;
+			height: 100px;
+			background:#ccc;
+		}
+
+		.addupload input{
+			display: block;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		} */
+       
+    </style>    
+</head>
+
+<body>
+
+    <div class="wrap">
+        <section class="text">
+            <textarea placeholder="这一刻的想法" maxlength="140"></textarea>
+		</section>
+		
+        <div class="item-count" id="ItemCount">
+            <p>还可以上传<span></span>个,已上传<span></span>个</p>
+		</div>
+		
+        <section class="content" id="content">
+            <div class="upload" id="upLoad">
+				<input type="file" class="filebtn" id="filebtn">
+			</div>
+			
+        </section>
+	</div>
+
+
+	<div class="addupload">
+		<input type="file" name="" id="">
+	</div>
+	<script src="./scripts/fileUpLoad.js"></script>
+    <script>
+
+
+		conmonFileLoad.fileInit({
+			parent: '.wrap'//父元素
+		});
+
+        //b 字节 1024b = 1kb
+        //kb 千字节 1024KB = 1MB
+        //mb 兆字节 
+        /*$('.filebtn').upload({
+            parent: '.content', //父元素
+            type: ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg'], //上传文件类型
+            size: 3 //mb
+        });*/
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas{
+            display: block;
+            margin:20px auto;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <script src="./js/data.js"></script>
+    <script>
+        function Draw(el,options){
+            this.canvas=document.querySelector(el);
+            this.ctx=this.canvas.getContext("2d");
+            this.width=this.canvas.width;
+            this.height=this.canvas.height;
+            this.offset=options.offset;
+            this.data=options.data;
+            this.DrawLine();
+        };
+
+        Draw.prototype.DrawLine=function(){
+            var l=this.offset[3],
+                t=this.offset[0],
+                r=this.offset[1],
+                b=this.offset[2],
+                sumX=this.width-l-r,
+                sumY=this.height-t-b,
+                numX=sumX/(this.data.xAxis.length-1),
+                numY=sumY/(this.data.yAxis.length-1);
+            //移动画布到指定位置
+            this.ctx.translate(l,this.height-b);
+
+            //x轴线
+            this.setLine(0,0,sumX,0);
+            
+            //y轴线
+            this.setLine(0,0,0,-sumY);
+
+            //x轴线刻度
+            this.ctx.textAlign="center";
+            this.ctx.textBaseline="top";
+            this.data.xAxis.map(function(v,i){
+                var x=numX*i;
+                this.setLine(x,0,x,10);
+                this.ctx.fillText(v,x,15);
+            },this);
+
+            //y轴线刻度
+            this.ctx.textAlign="right";
+            this.ctx.textBaseline="middle";
+            this.data.yAxis.map(function(v,i){
+                var y=-numY*i;
+                this.setLine(0,y,-10,y);
+                this.ctx.fillText(v,-15,y);
+
+                if(i!=0){
+                  this.ctx.save();
+                  this.ctx.strokeStyle="#eee";
+                  this.setLine(0,y,sumX,y);
+                  this.ctx.restore();
+                }
+            },this);
+
+            //画中间部分
+            var maxVal=this.data.yAxis[this.data.yAxis.length-1],
+                deg=Math.PI/180;
+
+            this.data.series.map(function(item,ind){
+                this.ctx.save();
+                this.ctx.beginPath();
+                this.ctx.strokeStyle=item.color;
+                //画线
+                item.data.map(function(v,i){
+                    var x=numX*i,
+                        y=-(v/maxVal*sumY);
+                    if(i===0){
+                       this.ctx.moveTo(x,y);
+                    }else{
+                        this.ctx.lineTo(x,y);
+                    }
+                },this);
+                this.ctx.stroke();
+                this.ctx.closePath();
+
+                //画圆
+                item.data.map(function(v,i){
+                    var x=numX*i,
+                        y=-(v/maxVal*sumY);
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle="#fff";
+                    this.ctx.arc(x,y,3,0,360*deg);
+                    this.ctx.fill();
+                    this.ctx.stroke();
+                    this.ctx.closePath();
+                },this);
+                this.ctx.restore();
+            },this);
+        };
+
+        Draw.prototype.setLine=function(startX,startY,endX,endY){
+            this.ctx.beginPath();
+            this.ctx.moveTo(startX,startY);
+            this.ctx.lineTo(endX,endY);
+            this.ctx.stroke();
+            this.ctx.closePath();
+        };
+
+        new Draw("#canvas",{
+            offset:[60,20,50,50],
+            data:option
+        });
+    </script>
+</body>
+</html>

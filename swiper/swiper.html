@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../libs/swiper.min.css">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .banner1{
+            width: 700px;
+            height:320px;
+        }
+        .next,.prev{
+            width: 30px;
+            height: 30px;
+            background:rgba(255,255,255,.7);
+            border-radius: 50%;
+        }
+        #page span{
+            width: 10px;
+            height: 10px;
+            background:#fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 可以引用多个swiper但是要保留swiper-container这个类,多个之间用id或class进行区分 -->
+    <div class="swiper-container banner1" id="banner1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./image/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/5.jpg" alt=""></div>
+        </div>
+        <!-- 分页器 -->
+        <div class="swiper-pagination" id="page"></div>
+
+        <!-- 左右按钮 -->
+        <div class="swiper-button-prev prev"></div>
+        <div class="swiper-button-next next"></div>
+    </div>
+    
+
+    <script src="../libs/swiper.min.js"></script>
+    <script>
+        //一定要是实例化swiper
+        new Swiper("#banner1",{
+            autoplay:true, //默认值是:false  true:开启自动轮播三秒一次
+            autoplay:{
+                delay:1000//delay延迟时间  单位毫秒值
+            },
+            direction:"horizontal",//horizontal"水平"|vertical"垂直"  轮播方向
+            loop:true,//表示无限循环播放  false默认值
+            pagination:{
+                el:"#page",//分页器的元素
+                clickable:true//点击分页切换轮播
+            },
+            navigation:{
+                nextEl:".next",//下一张按钮元素
+                prevEl:".prev"//上一张按钮元素
+            }
+            //slidesPerView:3,//表示一屏显示两张图片
+            //slidesPerGroup:2//表示每次走两张
+        })
+    </script>
+</body>
+</html>

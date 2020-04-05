@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <audio id="audio" src="./bg/Funny_short.mp3" controls></audio>
+    <button id="btn" type="button">播放</button>
+    <video src="./video/1.mp4" controls></video>
+
+
+    <script>
+        //autoplay在谷歌浏览器中不支持自动播放
+        var audio=document.querySelector("#audio");
+        var btn=document.querySelector("#btn");
+        if(!audio.canPlayType){
+           alert("您的浏览器不支持音频");
+        }
+
+        var flag=true;
+
+        btn.onclick=function(){
+            if(flag){
+                flag=false;
+                audio.play();
+                this.innerHTML="暂停"; 
+            }else{
+                flag=true;
+                audio.pause();
+                this.innerHTML="播放";
+            }
+            console.log(audio.currentTime);//返回从开始播放到现在所用的时间
+            console.log(audio.duration);//音频视频的总时常
+        }
+
+        
+    </script>
+    
+</body>
+</html>

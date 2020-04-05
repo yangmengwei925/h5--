@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .wrapper{
+            width: 100%;
+            height: auto;
+        }
+
+        .wrapper ul{
+            width: 100%;
+            height: 100%;
+        }
+        .wrapper ul li{
+            width: 100%;
+            height:40px;
+            border-bottom:solid 1px #ccc;
+            display: flex;
+            position: relative;
+            
+        }
+        
+        .wrapper ul li em{
+            height: 100%;
+            width: 60px;
+            background:red;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+        .list dl{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            background:#fff;
+            position: absolute;
+            z-index: 99;
+            transition: .5s;
+        }
+        .list dl.active{
+           transform: translateX(-60px); 
+        }
+        .list dl dt{
+            width: 25px;
+            height: 25px;
+            background:red;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <ul class="list">
+            <li >
+                <dl>
+                    <dt></dt>
+                    <dd>1703C</dd>
+                </dl>
+                <em>删除</em>
+            </li>
+            <li>
+                <dl>
+                    <dt></dt>
+                    <dd>1703C</dd>
+                </dl>
+                <em>删除</em>
+            </li>
+            <li>
+                <dl>
+                    <dt></dt>
+                    <dd>1703C</dd>
+                </dl>
+                <em>删除</em>
+            </li>
+        </ul>
+
+    </div>
+    
+    <script src="./js/touch.js"></script>
+    <script>
+       
+        $("dl").slideLeft(function(){
+            this.classList.add("active");
+        })
+        $("dl").slideright(function(){
+            this.classList.remove("active");
+        })
+    </script>
+</body>
+</html>

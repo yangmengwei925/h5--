@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0
+        }
+        #canvas{
+            display: block;
+            margin:50px auto;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id='canvas' width="500" height="400"></canvas>
+    
+    <script>
+        var canvas=document.querySelector("#canvas"),
+            ctx=canvas.getContext("2d"),
+            deg=Math.PI/180,
+            init=0,end=360;
+        
+        ctx.lineWidth=10;
+
+        ctx.font="30px 微软雅黑";
+        ctx.fillStyle="orange";
+        ctx.textAlign="center";
+        ctx.textBaseline="middle";
+
+        function move(){
+            init++;
+            if(init<end){
+                requestAnimationFrame(move);
+            }else{
+                cancelAnimationFrame(move);
+            }
+
+            var text=Math.round(init/360*100)+"%";
+
+            ctx.clearRect(0,0,500,400);
+            ctx.beginPath();
+            ctx.arc(200,200,100,0,init*deg);
+            ctx.fillText(text,200,200);
+            ctx.strokeStyle="orange";
+            ctx.stroke();
+        }
+
+        move();
+    </script>
+</body>
+</html>

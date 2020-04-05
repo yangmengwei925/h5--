@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 100%;
+            height: auto;
+        }
+        .swiper-container{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .swiper-wrapper{
+            width: 100%;
+            height: auto;
+            display: flex;
+            transition: .5s;
+        }
+        .swiper-slide{
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .swiper-slide img{
+            width: 100%;
+            height: auto;
+            display: block;
+            
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="wrapper">
+
+        <div class="swiper-container banner">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./img/1.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./img/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./img/3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./img/4.jpg" alt=""></div>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+    <script>
+
+        function Swiper(el,option){
+            this.container=document.querySelector(el);
+            this.wrapper=this.container.querySelector(".swiper-wrapper");
+            this.slide=this.wrapper.querySelectorAll(".swiper-slide");
+            this.length=this.slide.length;
+            this.width=this.slide[0].offsetWidth;
+            this.offset=this.width/2;//边界条件
+            this.index=0;
+            this.option=option;
+
+            this.addEvent();
+        }
+
+        Swiper.prototype.addEvent=function(){
+            var that=this;
+            var startX,startY,moveX,moveY;
+
+            this.container.addEventListener("touchstart",function(e){
+                var touch=e.touches[0];
+                startX=touch.clientX;
+                startY=touch.clientY;
+                
+                that.wrapper.style.transtionDuration="0s";
+            });
+
+            this.container.addEventListener("touchmove",function(e){
+                
+                var touch=e.touches[0];
+                moveX=touch.clientX;
+                moveY=touch.clientY;
+                
+                that.wrapper.style.transform=`translate3d(${moveX-startX-that.index*that.width}px,0,0)`;
+            });
+            this.container.addEventListener("touchend",function(){
+                var speds=moveX-startX;//运动的距离
+                if(Math.abs(speds)>=that.offset){
+                  if(speds<0){//左滑
+                    that.index++;
+                    that.index=that.index>=that.length?that.length-1:that.index;
+                  }else{//右滑
+                    that.index--;
+                    that.index=that.index<=0?0:that.index;
+                  }
+                }
+                that.wrapper.style.transtionDuration=".5s";
+                that.wrapper.style.transform=`translate3d(${-that.index*that.width}px,0,0)`;
+            });
+        }
+
+        new Swiper(".banner",{
+
+        })
+
+    </script>
+</body>
+</html>

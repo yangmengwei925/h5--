@@ -1,0 +1,129 @@
+@charset "UTF-8"; /*编码方式*/
+
+@import "./conmon.css"; //载入外部文件
+
+// .wrap{
+//     color:$c;
+// }
+
+$c: red;
+$c: blue !default;
+$l: 10px;
+$le: left;
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: $c;
+  margin-#{$le}: $l;
+  position: absolute;
+  #{$le}: 10px;
+  //border:1px solid #ccc;
+  border: {
+    width: 2px;
+    style: solid;
+    color: #ccc;
+  }
+}
+
+.navList {
+  width: 100%;
+  height: 45px;
+
+  & + {
+    background: #ccc;
+  }
+
+  ul {
+    width: 100%;
+    height: auto;
+
+    > li {
+      text-align: center;
+      line-height: 45px;
+      float: left;
+      padding: 3px 6px;
+      margin-#{$le}: 10px;
+
+      a {
+        display: block;
+
+        &:hover {
+          background: red;
+        }
+      }
+    }
+  }
+}
+
+// // 混合宏 无参
+// @mixin  num{
+//     width:100px;
+//     height: 100px;
+//     background: #000;
+// }
+
+// // 混合宏 有参
+// @mixin  num($w,$h,$c){//必须传递参数，且参数必须对应
+//     width:$w;
+//     height: $h;
+//     background:$c;
+// }
+
+// 混合宏 有参加默认值
+@mixin num($w: 100%, $h: auto, $c: #000) {
+  width: $w;
+  height: $h;
+  background: $c;
+}
+
+header {
+  @include num(500px, 300px, orange);
+  border: solid 1px #ccc;
+}
+
+main {
+  @include num;
+  font-size: 20px;
+}
+
+%div {
+  width: 100%;
+  height: auto;
+  background: #000;
+  font-size: 20px;
+  border: solid 1px #ccc;
+}
+
+.mianBox {
+  @extend %div;
+}
+
+//scss 继承 && 占位符%
+//调用 @extend 选择器
+
+//选择器继承和占位符继承的区别:
+//1.选择器继承必须有相同的元素属性，在css中会产生代码
+//2.占位符继承不会在css中产生代码
+//注意: 用法恰当
+
+//scss混合宏
+//1.声明方式@mixin 宏的名称{代码块}
+//2.调用方式@include 宏的名称
+
+//scss嵌套 属性嵌套,选择器嵌套
+//1.选择器嵌套最多嵌套四层多了性能极差，多的单拿出来写
+//&表示父级元素
+//嵌套中可以使用 + > ~ 选择器
+
+//属性嵌套 属性:{属性:值}
+
+//scss变量 声明变量 $名字:值==>普通变量 $名字: 值 !default==>默认变量
+//1.变量只能在定义之后进行访问
+//2.默认变量变量的优先级是最低的
+//3.默认情况下不能把变量当作属性使用，想作为属性使用必须通过插值的方式#{变量名}
+
+//scss===sass 是用来编译css代码的
+//1.永远不要修改css文件，要修改就动scss
+//2.(//)单行注释不会出现在css见文件中 (/**/)多行注释会出现在css文件中
+//3.html载入的文件必须是css

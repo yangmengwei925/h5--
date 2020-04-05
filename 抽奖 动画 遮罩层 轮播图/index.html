@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* transition 通过事件来执行动画
+            animation  通过关键帧来执行动画
+
+            //animation复合属性
+            animation-name: 通过@keyframes定义的关键帧动画名称
+            animation-duration: 整个动画所执行的时间 单位:s ms
+            animation-timing-function规定动画的速度曲线。如：
+                linear??动画从头到尾的速度是相同的。?
+                ease????默认。动画以低速开始，然后加快，在结束前变慢。?
+                ease-in?动画以低速开始。????
+                ease-out????动画以低速结束。????
+                ease-in-out?动画以低速开始和结束。
+                
+            animation-delay: 动画开始延迟时间（即:多长时间后开始执行动画）?单位:s ms
+            animation-iteration-count规定动画应该播放的次数。默认：执行1次 infinite(无限循环)
+            animation-direction规定是否应该轮流反向播放动画。
+              normal??默认值。动画应该正常播放。???
+              alternate???动画应该轮流反向播放。
+            animation-fill-mode //定义动画结束后保持结束时状态  
+                分别为：none(无效果)、forwards(停留动画最后一帧)、backwards(动画第一帧)、both(forwards和backwards结合)。 
+
+            @keyframes(关键帧) 关键帧定义的名称{
+                0%{}
+                30%{}
+                60%{}
+                100%{}...
+
+                from===%0
+                to===100%
+            } */
+
+            .box{
+                width: 200px;
+                height: 200px;
+                text-align: center;
+                line-height: 200px;
+                background:orange;
+                font-size: 32px;
+                animation: mycircle 5s linear  forwards;
+            }
+
+            @keyframes mycircle{
+                0%{
+                    width: 200px;
+                    height: 200px; 
+                    background:orange;
+                }
+
+                30%{
+                    width: 200px;
+                    height: 200px; 
+                    border-radius: 20%;
+                    background:yellow;
+                    transform: translateX(500px);
+                }
+
+                70%{
+                    width: 200px;
+                    height: 200px; 
+                    border-radius: 35%;
+                    background:green;
+                    transform: translateX(500px) translateY(500px);
+                }
+
+                100%{
+                    width: 200px;
+                    height: 200px; 
+                    border-radius: 50%;
+                    background:skyblue;
+                    transform: translateX(0px) translateY(500px);
+                }
+            }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        我要变圆
+    </div>
+    
+</body>
+</html>

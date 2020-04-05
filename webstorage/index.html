@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>webstorage: </h2>
+    <p></p>
+
+    <button id="getData">获取</button>
+    <button id="setData">设置</button>
+    <button id="replaceData">替换</button>
+    <button id="removeData">删除</button>
+
+
+    <script>
+
+        var wrap = document.querySelector("p");
+        //var storage=window.localStorage;
+        var storage = window.sessionStorage;
+
+        $("setData").onclick = setFn;
+
+        function setFn() {
+            storage.setItem("name", "1703C");//1
+            storage.age = 12;//2
+            storage["sex"] = true;//3
+        }
+
+
+        $("getData").onclick = getFn;
+
+        function getFn() {
+            wrap.innerHTML+=storage.getItem("name")+"，";
+            wrap.innerHTML+=storage.age+"，";
+            wrap.innerHTML+=storage["sex"];
+
+            //获取key 返回下标为index的key
+            console.log(storage.key(0));//返回对应的key(属性)
+        }
+
+        $("replaceData").onclick = replaceFn;
+
+        function replaceFn() {
+            //替换就是重新赋值
+            storage.setItem("name", "shanjiangwei");//1
+            storage.age = 18;//2
+            storage["sex"] = true;//3
+        }
+
+        $("removeData").onclick = removeFn;
+
+        function removeFn() {
+            //单个删除 removeItem("要删除的属性")
+            storage.removeItem("sex");
+            //删除所有  clear();
+            storage.clear();
+        }
+
+
+
+        function $(id) {
+            return (typeof id) === "string" ? document.getElementById(id) : id;
+        }
+
+
+        // cookie 
+
+        // webstorage:
+        //     1.localstorage
+        //     2.sessionstorage  
+
+        // 用内置的方法查找：找不到返回null
+        // 用点或中括号[]: 找不到返回undefined
+    </script>
+</body>
+
+</html>

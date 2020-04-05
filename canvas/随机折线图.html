@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0
+        }
+
+        #canvas{
+            display: block;
+            margin:50px auto;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width="500" height="260"></canvas>
+    
+
+    <script>
+        var canvas=document.querySelector("#canvas"),
+            ctx=canvas.getContext("2d"),
+            num=6,
+            width=canvas.width,
+            height=canvas.height,
+            numW=width/num;
+
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1)+min);
+        };
+
+        var dataArray=[];
+
+        for(var i=0;i<=num;i++){
+            dataArray.push({
+                x:i*numW,
+                y:getRandom(0,height)
+            });
+        };
+        ctx.beginPath();
+        dataArray.map(function(item,ind){
+            if(ind==0){
+              ctx.moveTo(item.x,item.y);
+            }else{
+              ctx.lineTo(item.x,item.y); 
+            }
+        });
+        ctx.lineTo(width,height);
+        ctx.lineTo(0,height);
+        
+        var maxObj=dataArray.sort(function(a,b){
+            return b.y-a.y;
+        });
+
+        var color=ctx.createLinearGradient(width/2,height-maxObj[0].y,width/2,height);
+        color.addColorStop(0,"skyblue");
+        color.addColorStop(1,"blue");
+        ctx.fillStyle=color;
+        ctx.fill();
+        ctx.stroke();
+
+
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/*编码方式*/
+@import url(d:\H5技能\1703C\day1\styles\conmon.css);
+.box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  margin-left: 10px;
+  position: absolute;
+  left: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ccc;
+}
+
+.navList {
+  width: 100%;
+  height: 45px;
+}
+
+.navList + {
+  background: #ccc;
+}
+
+.navList ul {
+  width: 100%;
+  height: auto;
+}
+
+.navList ul > li {
+  text-align: center;
+  line-height: 45px;
+  float: left;
+  padding: 3px 6px;
+  margin-left: 10px;
+}
+
+.navList ul > li a {
+  display: block;
+}
+
+.navList ul > li a:hover {
+  background: red;
+}
+
+header {
+  width: 500px;
+  height: 300px;
+  background: orange;
+  border: solid 1px #ccc;
+}
+
+main {
+  width: 100%;
+  height: auto;
+  background: #000;
+  font-size: 20px;
+}
+
+.mianBox {
+  width: 100%;
+  height: auto;
+  background: #000;
+  font-size: 20px;
+  border: solid 1px #ccc;
+}

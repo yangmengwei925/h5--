@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 50px auto;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+
+    <canvas id="canvas" width="500" height="400"></canvas>
+    
+
+    <script>
+        var canvas=document.querySelector("#canvas"),
+            ctx=canvas.getContext("2d");
+
+        //fillRect===rect
+        ctx.rect(10,180,480,40);
+        ctx.fillStyle="#ccc";
+        ctx.fill();
+        ctx.stroke();
+
+        var sum=19*5+1,//总线条数
+            spaceNum=(480-20)/19/5,//间距
+            count=0;//计数器
+
+        
+        ctx.font="14px 微软雅黑";
+        ctx.fillStyle="orange";
+        ctx.textAlign="center";
+        ctx.textBaseline="top";
+
+        for(var i=0;i<sum;i++){
+           ctx.beginPath();
+           ctx.moveTo(20+spaceNum*i,180);
+           if(i%5==0){
+             ctx.lineTo(20+spaceNum*i,200);
+             count++;
+             ctx.fillText(count,20+spaceNum*i,200)
+           }else{
+             ctx.lineTo(20+spaceNum*i,193);
+           }
+
+           ctx.stroke();
+        }
+
+
+        
+    </script>
+</body>
+</html>

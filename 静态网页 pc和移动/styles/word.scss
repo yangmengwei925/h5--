@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+*{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html{
+    //font-size: 62.5%;//62.5% 1rem==10px
+    font-size: 100px; //100px==>1rem o.1rem==10px
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    font-size:14px;
+}
+
+
+header{
+    width: 100%;
+}
+
+main{
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width:320px) and (max-width:640px){//phone
+    header{
+        height: 48px;
+        background:#fff;
+        .pc-head{
+            display: none;
+        }
+        .m-head{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+                width: .23rem;
+                height: .18rem;
+                display: block;
+                background:#ccc;
+                margin-right: .1rem;
+            }
+        }
+    }
+    .banner{
+        width: 100%;
+        height: auto;
+        .pc-banner{
+            display: none;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+@media screen and (min-width:641px){//phone
+    header{
+        height: .7rem;
+        background:#fff;;
+        .m-head{
+            display: none
+        }
+        .pc-head{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            justify-content: space-between;
+
+            ul{
+                height: 100%;
+                display: flex;
+                
+                li{
+                    padding: 0 18px;
+                    border-left:1px solid #eee;
+                    line-height: .7rem;
+                    a{
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+    .banner{
+        width: 100%;
+        height: auto;
+        .m-banner{
+            display: none;
+        }
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+// @media screen and (min-width:641px) and (max-width:1024px){ipad
+    
+// }

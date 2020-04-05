@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #canvas{
+            border:solid 1px #ccc;
+            display: block;
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+    
+    <script>
+        //测试浏览器是否支持canvas
+        // if(canvas.getContext){
+        //    alert("支持");
+        // }else{
+        //     alert("不支持");
+        // }
+
+        //获取
+        var canvas=document.querySelector("#canvas"),
+            ctx=canvas.getContext("2d");//2D对象,绘图操作都需要这个对象完成。
+
+
+        ctx.beginPath();
+        ctx.arc(150,270,50,0,Math.PI*2);
+        
+        ctx.moveTo(185,270);
+        ctx.arc(150,270,35,0,Math.PI);
+
+        ctx.moveTo(125,240);
+        ctx.arc(120,240,5,0,Math.PI*2);
+
+        ctx.moveTo(185,240);
+        ctx.arc(180,240,5,0,Math.PI*2);
+
+        ctx.stroke();
+        
+
+
+
+
+
+        ctx.strokeStyle="red";
+        ctx.lineWidth=10;//线宽
+        
+        ctx.beginPath();//新建一条路径
+        ctx.moveTo(150,50);//起始点坐标。
+        ctx.lineTo(300,50);//当前位置到指定坐标(x,y)的直线
+        ctx.lineTo(300,200);//当前位置到指定坐标(x,y)的直线
+        //ctx.lineTo(150,50);
+        ctx.closePath();
+        ctx.stroke();//通过线条来绘制图形轮廓
+        ctx.fill();//.填充闭合区域。如果path没有闭合，则fill()会自动闭合路径
+
+        
+
+        ctx.fillStyle="orange";//默认是黑色，可以更改颜色
+        ctx.fillRect(20,20,100,100);//画一个矩形
+        ctx.strokeStyle="#fff";
+        ctx.strokeRect(30,30,10,10);//绘制一个矩形边框
+        ctx.strokeRect(100,30,10,10);
+        ctx.clearRect(60,80,20,20);//清除指定区域
+
+        
+
+        
+            
+    </script>
+</body>
+</html>

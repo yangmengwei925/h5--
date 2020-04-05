@@ -1,0 +1,93 @@
+���ɶ���
+{
+    transition-property:Ҫ���ɵ� CSS ��������(ʹ�� all��ʾ��������);
+    transition-duration:����Ч��������ʱ��
+    transition-timing-function:�˶���ʽ(ease��Ĭ��ֵ linear:�����˶� ease-in:��ʾ�������� ease-out:��ʾ�ɿ쵽�� ease-in-out:������);
+    transition-delay:1s �������ӳ�ʱ�䣬
+    transition������������  ����(����(property),������ʱ��(duration))
+    ���ɶ������봥������¼�
+    ��Щ�����ǲ����Թ��ȵ�: line-height,text-align ...
+}
+����:transform
+{
+   transform��rotate(��ת����)  Ĭ����Z�ᣬ��λdeg
+   transform��rotateX(45deg)��x��ˮƽ��ת
+   transform��rotateY��45deg����Y�ᴹֱ��ת
+   transform��rotate3d(4������)   rotate3d(1,0,1,30deg); 0��ʾ����ת
+
+   transform:translate(x,y)  ��ʾλ��  ���Զ������ó�������д��translateX
+   ���ֻ��һ��ֵ��Ĭ�ϱ�ʾX��λ��
+   X�᣺��ֵ��ʾ�����ƶ�����ֵ��ʾ�����ƶ�
+   Y�᣺��ֵ��ʾ�����ƶ�����ֵ��ʾ�����ƶ�
+   translate3d()�����б�����3������
+
+   transform:scale(��ֵ):��ʾ���� (1):Ԫ�ز��� (0):Ԫ������
+   transform:scale(2)��ʾ���Ⱥ͸߶�һ��Ŵ�2��
+   transform:scalex(2)��scaley(2)  ��ʾ�߶Ȼ����Ϊԭ����2�������᲻��
+   transform:scale3d()�����3d�޶� ���봫3������
+
+   skew(x,y):���������б��Ť������λdeg
+   skew(15deg,30deg)����������ʾx y��ͬʱ����
+   skew��֧��z�ᡣ���ֻ�ܴ���������
+
+   transform-origin:x y;�ı�Ԫ�صĻ�׼��
+   x:left==>0%  right==>100%  center==>50% 
+   y:top==>0%   bottom==>100%  center==>50%
+   ���ϵ�ֵҲ��������д�ٷֱ�
+   Ĭ�������ĵ�
+   
+}
+
+�����ı�ʡ�Ժ�
+    -webkit-line-clamp:��ֵ������������һ����Ԫ����ʾ���ı�������
+    display: -webkit-box; �����ϵ����� ����������Ϊ������������ģ����ʾ ��
+    -webkit-box-orient��vertical(��ֱ), horizontal(ˮƽ)�����ϵ����� �����û���������ж������Ԫ�ص����з�ʽ ��
+    text-overflow: ellipsis;��ʾʡ�Ժ�
+    ��ʹ���ϵ��Ժ������Ǳ���������ǰ׺
+
+
+backface-visibility:���ر���ת�� div Ԫ�صı��棺visible(Ĭ�Ͽ���)  hidden(������)
+
+transform-style: preserve-3d; 3d�ռ�
+perspective: 800px; ������Ϊ�Ӿ���߽���.���۾���������ľ��룩
+perspective-origin ���Զ��� 3D Ԫ�������ڵ� X ��� Y �ᡣ�������������ı� 3D Ԫ�صĵײ�λ 
+        �ã��۾���λ��	
+
+
+
+	    transition ͨ���¼���ִ�ж���
+            animation  ͨ���ؼ�֡��ִ�ж���
+
+            //animation��������
+            animation-name: ͨ��@keyframes����Ĺؼ�֡��������
+            animation-duration: ����������ִ�е�ʱ�� ��λ:s ms
+            animation-timing-function�涨�������ٶ����ߡ��磺
+                linear??������ͷ��β���ٶ�����ͬ�ġ�?
+                ease????Ĭ�ϡ������Ե��ٿ�ʼ��Ȼ��ӿ죬�ڽ���ǰ������?
+                ease-in?�����Ե��ٿ�ʼ��????
+                ease-out????�����Ե��ٽ�����????
+                ease-in-out?�����Ե��ٿ�ʼ�ͽ�����
+                
+            animation-delay: ������ʼ�ӳ�ʱ�䣨��:�೤ʱ���ʼִ�ж�����?��λ:s ms
+            animation-iteration-count�涨����Ӧ�ò��ŵĴ�����Ĭ�ϣ�ִ��1�� infinite(����ѭ��)
+            animation-direction�涨�Ƿ�Ӧ���������򲥷Ŷ�����
+              normal??Ĭ��ֵ������Ӧ���������š�???
+              alternate???����Ӧ���������򲥷š�
+            animation-fill-mode //���嶯�������󱣳ֽ���ʱ״̬  
+                �ֱ�Ϊ��none(��Ч��)��forwards(ͣ���������һ֡)��backwards(������һ֡)��both(forwards��backwards���)�� 
+
+            @keyframes(�ؼ�֡) �ؼ�֡���������{
+                0%{}
+                30%{}
+                60%{}
+                100%{}...
+
+                from===%0
+                to===100%
+            }
+            控制动画暂停和运动可以用属性:animation-play-state:
+            :paused(暂停)|running(运动) 
+            ↑
+
+
+

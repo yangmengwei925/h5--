@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../libs/swiper.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header {
+            height: 50px;
+            border-bottom: solid 1px #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+        
+        header span {
+            width: 50%;
+            cursor: pointer;
+        }
+        
+        header span.active {
+            color: orange;
+        }
+        
+        main {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <span>新闻</span>
+            <span>娱乐</span>
+        </header>
+
+        <main class="swiper-container mian">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">新闻内容</div>
+                <div class="swiper-slide">娱乐内容</div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script src="../libs/swiper.min.js"></script>
+    <script>
+        var navList = [...document.querySelectorAll("header>span")];
+
+        var mySwiper = new Swiper(".mian", {
+            on: {
+                slidechange: function() {
+                    //切换当前事件的下标
+                    var ind = this.activeIndex;
+                    change(ind);
+                }
+            }
+        });
+
+        navList.forEach(function(item, ind) {
+            item.onclick = function() {
+                change(ind);
+                mySwiper.slideTo(ind);
+            }
+        })
+
+
+        function change(ind) {
+            navList.forEach(function(item) {
+                item.classList.remove("active");
+            });
+            navList[ind].classList.add("active");
+        }
+    </script>
+</body>
+
+</html>

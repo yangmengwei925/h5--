@@ -1,0 +1,261 @@
+a,
+a:hover,
+a:active,
+a:link,
+a:visited {
+  color: #333;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  text-align: inherit;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+iframe {
+  display: block;
+}
+
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500;
+}
+
+i,
+code,
+b {
+  font-weight: normal;
+  font-style: normal;
+}
+
+code {
+  background: transparent;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+header {
+  width: 100%;
+  height: 1.33333rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #ccc;
+}
+header div {
+  flex: 1;
+}
+header div.head-trans {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+header div.head-trans span {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  position: relative;
+  line-height: 1.33333rem;
+}
+header div.head-trans span.active {
+  color: orange;
+}
+header div.head-trans span p.activeLine {
+  position: absolute;
+  width: 100%;
+  border-bottom: solid 2px orange;
+  background: orange;
+  bottom: 0;
+  transition: .5s;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+  position: relative;
+}
+main.swiper-container {
+  overflow: auto;
+}
+main .scrollWrap {
+  width: 100%;
+  height: 100%;
+}
+main .hot .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 1;
+}
+main .hot .swiper-pagination-bullet-active {
+  background: orange;
+}
+main .hotWrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+main .hotList, main .timeList {
+  width: 100%;
+  height: auto;
+}
+main .hotList dl, main .timeList dl {
+  width: 95%;
+  margin: 0.21333rem auto;
+  display: flex;
+}
+main .hotList dl dt, main .timeList dl dt {
+  width: 2.4rem;
+  height: 3.2rem;
+  margin-right: 0.26667rem;
+}
+main .hotList dl dt img, main .timeList dl dt img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.time {
+  width: 100%;
+  height: auto;
+}
+
+.time h3.time-title {
+  height: 1.06667rem;
+  width: 100%;
+  background: #ccc;
+  line-height: 1.06667rem;
+  position: static;
+  left: 0;
+  top: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

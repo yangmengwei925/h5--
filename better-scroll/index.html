@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            height: 40px;
+            width: 100%;
+            background: #eee;
+            border-bottom: solid 1px #ccc;
+        }
+        
+        footer {
+            height: 40px;
+            width: 100%;
+            background: #eee;
+            border-top: solid 1px #ccc;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scrollBox {
+            width: 100%;
+        }
+        
+        .main-titleWrap {
+            width: 95%;
+            height: auto;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .main-titleWrap::after {
+            content: attr(data-down);
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: slategray;
+            color: #fff;
+            position: absolute;
+            left: 0;
+            bottom: -40px;
+        }
+        
+        .main-titleWrap p {
+            width: 100%;
+            height: 100px;
+            background: skyblue;
+            line-height: 100px;
+            margin-top: 10px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .scrollXwrap {
+            width: 100%;
+            height: auto;
+            padding: 10px 0;
+            border-top: solid 1px #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .scrollXwrap ul {
+            width: 100%;
+            height: auto;
+            display: flex;
+        }
+        
+        .scrollXwrap ul li {
+            width: 200px;
+            height: 100px;
+            background: tomato;
+            flex-shrink: 0;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+
+        </header>
+
+        <main class="wrapperMain">
+            <div class="scrollBox">
+                <div class="main-titleWrap" id="mainTitleWrap" data-down="上拉加载更多">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>7</p>
+                    <p>8</p>
+                    <p>9</p>
+                    <p>10</p>
+                </div>
+            </div>
+
+        </main>
+
+        <div class="scrollXwrap">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
+
+
+    <script src="./better-scroll.js"></script>
+    <script>
+        var scrollXUl = document.querySelector(".scrollXwrap>ul"),
+            lis = scrollXUl.children,
+            sum = 0;
+
+        for (var i = 0; i < lis.length; i++) {
+            sum += lis[i].offsetWidth + 10;
+            lis[i].onclick = function() {
+                scrollXwrap.scrollToElement(this, 800, 0, 0);
+            }
+        };
+
+        //必须计算元素的总宽
+        scrollXUl.style.width = sum + "px";
+
+        //横向
+        var scrollXwrap = new BScroll(".scrollXwrap", {
+            scrollbar: true,
+            scrollX: true,
+            probeType: 2,
+            click: true //默认点击事件是被禁用的 true开启
+        });
+        // var scrollXUl = document.querySelector(".scrollXwrap>ul");
+        // var lis = scrollXUl.children;
+        // var sum = 0;
+        // for (var i = 0; i < lis.length; i++) {
+        //     sum += lis[i].offsetWidth + 10;
+        //     lis[i].onclick = function () {
+        //         scrollXwrap.scrollToElement(this, 800, 0, 0)
+        //     }
+        // };
+        // //计算元素宽
+        // scrollXUl.style.width = sum + "px";
+        // //横向
+        // var scrollXwrap = new BScroll(".scrollXwrap", {
+        //     scrollbar: true,
+        //     click: true,
+        //     scrollX: true,
+        // })
+        //获取节点
+        // var scrollXUl=document.querySelector(".scrollXwrap>ul");
+        // var lis=scrollXUl.children;
+        // var sum=0;
+        // for(var i=0;i<lis.length;i++){
+        //     sum+=lis[i].offsetWidth+10;
+        //     lis[i].onclick=function(){
+        //         scrollXwrap.scrollToElement(this,800,0,0)
+        //     }
+        // };
+        // //计算宽
+        // scrollXUl.style.width=sum+"px";
+        // var scrollXwrap=new BScroll(".scrollXwrap",{
+        //  scrollbar:true,
+        //  scrollX:true,
+        //  click: true,
+        // })
+
+        var wrapperScroll = new BScroll(".wrapperMain", {
+            scrollbar: true, //false|true 是否显示滚动条
+            scrollY: true, //true|false 垂直方向滚动
+            //scrollX：false|true 水平方向滚动
+            probeType: 2 //0|1|2|3 滚动条探测指数 0不获取滚动位置不触发scroll事件 1滚动停止滚动时触发 2滚动过程触发 3实时触发
+        });
+
+        // BScroll实例对象.y 当前滚动y轴距离
+        // BScroll实例对象.x 当前滚动x轴距离
+        // BScroll实例对象.maxScrollY 最大滚动y轴距离
+        // BScroll实例对象.maxScrollX 最大滚动x轴距离
+        var mainTitleWrap = document.querySelector("#mainTitleWrap");
+        wrapperScroll.on("scroll", function() {
+            if (this.y < this.maxScrollY - 40) {
+                mainTitleWrap.setAttribute("data-down", "释放加载更多");
+            } else if (this.y < this.maxScrollY - 20) {
+                mainTitleWrap.setAttribute("data-down", "上拉加载更多");
+            }
+        });
+
+        //滚动停止事件 回到初始状态
+        wrapperScroll.on("scrollEnd", function() {
+            mainTitleWrap.setAttribute("data-down", "上拉加载更多");
+        });
+
+        //手指松开判断是否加载数据
+        wrapperScroll.on("touchEnd", function() {
+
+            if (mainTitleWrap.getAttribute("data-down") == "释放加载更多") {
+                for (var i = 0; i < 10; i++) {
+                    var ps = document.createElement("p");
+                    ps.innerHTML = (i + 1);
+                    mainTitleWrap.appendChild(ps);
+
+                    ///dom结构发生变化 刷新滚动条 重新计算滚动距离
+                    wrapperScroll.refresh();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

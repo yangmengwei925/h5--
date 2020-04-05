@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .videoWrap{
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            border:solid 1px #ccc;
+            margin:50px auto; 
+            position: relative;
+        }
+        .videoWrap video{
+            width: 100%;
+            height: 100%;;
+        }
+        .videoWrap::after{
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left:0;
+            top:0;
+            background: rgba(0, 0, 0, .2);
+            transition: .8s;
+        }
+        .videoWrap.show::after{
+            background: rgba(0, 0, 0, 0);
+        }
+
+
+        .videoBtn{
+            width: 60px;
+            height: 60px;
+            background:url(./img/btnPlay.png) no-repeat center center;
+            background-size: cover;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            z-index: 99;
+            transition: transform .8s;
+        }
+        .videoBtn.active{
+            background:url(./img/btnPause.png) no-repeat center center;
+            background-size: cover;
+            transform:translate(-242px,85px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="videoWrap">
+        <video src="./video/1.mp4"></video>
+        <span class="videoBtn"></span>
+    </div>
+
+    <script>
+        
+        var videoWrap=document.querySelector(".videoWrap"),
+            video=videoWrap.querySelector("video"),
+            videoBtn=videoWrap.querySelector(".videoBtn");
+
+        videoBtn.onclick=function(){
+            if(this.classList.contains("active")){
+                video.pause();
+                this.classList.remove("active");
+                videoWrap.classList.remove("show");
+            }else{
+                video.play();
+                this.classList.add("active");
+                videoWrap.classList.add("show");
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>

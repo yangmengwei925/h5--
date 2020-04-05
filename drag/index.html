@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        .rubbishWrap{
+            width: 300px;
+            height: 150px;
+            border:solid 1px #ccc;
+        }
+        .rubbishWrap.active{
+            border:solid 1px red;
+        }
+
+        .wrapList a,.rubbishWrap a{
+            display: block;
+            text-decoration: none;
+            color:#000;
+            width: 120px;
+            height: 30px;
+            border:solid 1px red;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <p>将元素拖放到这里: </p>
+    <div class="rubbishWrap">
+
+    </div>
+    <div class="wrapList">
+        <a id="drag1" href="javascript:;" draggable="true">元素1</a>
+        <a id="drag2" href="javascript:;" draggable="true">元素2</a>
+        <a id="drag3" href="javascript:;" draggable="true">元素3</a>
+    </div>
+
+    <script>
+        var wrapLis=document.querySelectorAll(".wrapList>a"),
+            rubbishWrap=document.querySelector(".rubbishWrap");
+        var that;
+        for(var i=0;i<wrapLis.length;i++){
+            wrapLis[i].index=i;
+            wrapLis[i].ondragstart=function(e){
+                //setData("格式","信息")
+                e.dataTransfer.setData("text/html",this.getAttribute("id"));
+                that=this;
+            }
+        };
+
+        rubbishWrap.ondragenter=function(){
+            this.classList.add("active");
+        }
+
+        rubbishWrap.ondragleave=function(){
+            this.classList.remove("active");
+        }
+
+        rubbishWrap.ondrop=function(e){
+
+            wrapLis[that.index].parentNode.removeChild(that);
+
+            var ids=e.dataTransfer.getData("text/html");
+            rubbishWrap.appendChild(document.getElementById(ids));
+        }
+
+        rubbishWrap.ondragover=function(e){
+            e.preventDefault();
+        }
+
+        
+
+    </script>
+    
+</body>
+</html>

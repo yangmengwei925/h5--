@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            text-decoration: none;
+        }
+        .wrapper{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top:300px;
+            z-index: 99;
+        }
+        .wrapper a{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            color:#fff;
+            font-size: 18px;
+        }
+        .wrapper a img{
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            display: block;
+            margin:0 auto;
+        }
+        .bg{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+        #bg1:target{
+            z-index: 2;
+            animation: banOne 1s;
+        }
+
+        @keyframes banOne{
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+        }
+
+        #bg1:target{
+            z-index: 2;
+            animation: banOne 1s;
+        }
+
+        @keyframes banOne{
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(0%);
+            }
+        }
+
+        #bg2:target{
+            z-index: 2;
+            animation: bantwo 1s;
+        }
+
+        @keyframes bantwo{
+            0%{
+                transform: translateY(100%);
+            }
+            100%{
+                transform: translateY(0%);
+            }
+        }
+
+        #bg3:target{
+            z-index: 2;
+            animation: banthree .8s linear;
+        }
+
+        @keyframes banthree{
+            0%{
+                width: 0%;
+                height: 20%;
+                right: 0;
+                bottom:0;   
+            }
+            50%{
+                width: 30%;
+                height: 50%;
+                right: 0;
+                bottom:0;   
+            }
+            70%{
+                width: 70%;
+                height: 80%;
+                right: 0;
+                bottom:0;   
+            }
+            100%{
+                width: 100%;
+                height: 100%;
+                right: 0;
+                bottom:0;   
+            }
+        }
+
+        #bg4:target{
+            z-index: 2;
+            animation: banfour 1s;
+        }
+
+        @keyframes banfour{
+            0%{
+                transform: scale(.3) rotate(360deg);
+            }
+            100%{
+                transform: scale(1) rotate(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <a href="#bg1"><img src="./images/1.jpg" alt="">one</a>
+        <a href="#bg2"><img src="./images/2.jpg" alt="">two</a>
+        <a href="#bg3"><img src="./images/3.jpg" alt="">three</a>
+        <a href="#bg4"><img src="./images/4.jpg" alt="">four</a>
+        <a href="#bg5"><img src="./images/5.jpg" alt="">five</a>
+    </div>
+    <img class="bg" id="bg1" src="./images/1.jpg" alt="">
+    <img class="bg" id="bg2" src="./images/2.jpg" alt="">
+    <img class="bg" id="bg3" src="./images/3.jpg" alt="">
+    <img class="bg" id="bg4" src="./images/4.jpg" alt="">
+    <img class="bg" id="bg5" src="./images/5.jpg" alt="">
+    
+</body>
+</html>

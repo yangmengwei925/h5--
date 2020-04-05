@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0
+        }
+        .canvas{
+            display: block;
+            margin:50px auto;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+
+    <canvas class="canvas" width="400" height="400"></canvas>
+    
+
+    <script>
+        var data = [{
+            value: 335,
+            name: '直接访问',
+            color: "rgb(213, 58, 53)"
+        }, {
+            value: 310,
+            name: '邮件营销',
+            color: "rgb(51, 75, 92)"
+        }, {
+            value: 234,
+            name: '联盟广告',
+            color: "rgb(106, 176, 184)"
+        }, {
+            value: 135,
+            name: '视频广告',
+            color: "rgb(233, 143, 111)"
+        }, {
+            value: 1548,
+            name: '搜索引擎',
+            color: "rgb(145, 199, 174)"
+        }];
+
+        var sum=data.map(function(item){
+            return item.value;
+        }).reduce(function(prev,next){//规约函数
+            return prev+next;
+        });
+
+        var canvas=document.querySelector(".canvas"),
+            ctx=canvas.getContext("2d"),
+            d=Math.PI/180,
+            start=-90;
+
+        //移动画布原点  默认点：0,0
+        ctx.translate(200,200);
+
+        data.map(function(item,ind){
+            //计算每一个扇形的角度
+            var deg=item.value/sum*360;
+            //本身角度+起始角度=终止角度
+            var end=deg+start;
+            move(start,end,item.color,deg,item.name);
+            start=end;
+        });
+
+        function move(start,end,color,rdeg,name){
+            //每一个扇形中间的角度
+            var centerDeg=start+rdeg/2;
+
+            var x=Math.cos(centerDeg*d)*100,
+                y=Math.sin(centerDeg*d)*100;
+            
+            //画饼图
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.fillStyle=color;
+            ctx.arc(0,0,100,start*d,end*d);
+            ctx.fill();
+
+            //画线
+            ctx.beginPath();
+            ctx.strokeStyle=color;
+            ctx.moveTo(x,y);
+            ctx.textBaseline="middle";
+
+            console.log(x+","+y);
+            if(x>0 && y<0){
+              ctx.lineTo(x+10,y-10);
+              ctx.lineTo(x+30,y-10);
+              ctx.fillText(name,x+35,y-10);
+            }else if(x>0 && y>0){
+              ctx.lineTo(x+10,y+10);
+              ctx.lineTo(x+30,y+10);
+              ctx.fillText(name,x+35,y+10);
+            }else if(x<0 && y>0){
+              ctx.lineTo(x-10,y+10);
+              ctx.lineTo(x-30,y+10);
+              ctx.textAlign="right";
+              ctx.fillText(name,x-35,y+10);
+              
+            }
+            ctx.stroke();
+
+        };
+
+
+
+    
+    </script>
+</body>
+</html>

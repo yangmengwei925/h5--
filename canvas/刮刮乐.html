@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .content {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 1px #ccc;
+        }
+        
+        canvas {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="content">
+        <!-- <p>一等奖</p> -->
+        <p>谢谢惠顾</p>
+        <canvas id="canvas" width="500" height="300"></canvas>
+    </div>
+
+    <script>
+        var canvas = document.querySelector("#canvas"),
+            ctx = canvas.getContext("2d"),
+            deg = Math.PI / 180;
+        ctx.fillStyle = "#eee";
+        ctx.fillRect(0, 0, 500, 300);
+
+        var content = document.querySelector(".content");
+
+        var x = content.offsetLeft,
+            y = content.offsetTop,
+            flag = false;
+        content.onmousedown = function(e) {
+            var e = e || window.event;
+            var startX = e.pageX - x,
+                startY = e.pageY - y;
+
+            ctx.beginPath();
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.arc(startX, startY, 10, 0, 360 * deg);
+            ctx.fill();
+            flag = true;
+        }
+
+        content.onmousemove = function(e) {
+            var e = e || window.event;
+            if (flag) {
+                var moveX = e.pageX - x,
+                    moveY = e.pageY - y;
+
+                ctx.beginPath();
+                ctx.globalCompositeOperation = "destination-out";
+                ctx.arc(moveX, moveY, 10, 0, 360 * deg);
+                ctx.fill();
+            }
+        };
+
+        content.onmouseup = function() {
+            ctx.closePath();
+            flag = false;
+        }
+    </script>
+</body>
+
+</html>

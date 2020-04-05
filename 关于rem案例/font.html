@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @font-face{
+            font-family: "iconfont";
+            src:url("font/iconfont.ttf");
+        }
+        /* 在html中使用加&#x码 */
+        span{
+            font-family: "iconfont";
+        }
+        /* css引用方式:必须通过伪类的content属性:\e607 */
+        /* span::after{
+            font-family: "iconfont";
+            content: "\e607";
+        } */
+
+        /* 自定义字体的语法：
+            @font-face{
+                font-family: "字体名称";
+                src:url(字体路径);
+            } 
+
+            调用时必须通过font-family: "字体名称";
+        */
+    </style>
+</head>
+<body>
+
+    <span>&#xe60c;</span>
+    
+</body>
+</html>

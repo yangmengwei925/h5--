@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/flexible1.js"></script>
+    <link rel="stylesheet" href="./styles/menu.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="aside-duce" id="asideWrap"></div>
+        <div class="mark" id="mark"></div>
+        <header>
+            <a id="state" href="javascript:;"></a>
+            <h2>消息</h2>
+            <span>更多</span>
+        </header>
+        <main>
+            <div class="menu">
+                <span class="btn">↑</span>
+                <ul>
+                    
+                </ul>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+
+
+    <script>
+        var dataArray=["新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询","新闻","娱乐填空","体育","咨询"];
+        var state=document.querySelector("#state"),
+            asideWrap=document.querySelector("#asideWrap"),
+            mark=document.querySelector("#mark"),
+            menu=document.querySelector(".menu"),
+            menuLis=document.querySelector(".menu>ul"),
+            btn=document.querySelector('.btn');
+
+        
+        menuLis.innerHTML=dataArray.map(function(item,ind,array){
+            return `<li>${item}</li>`;
+        }).join("");
+
+        var menuH=menu.offsetHeight,
+            menulisH=menuLis.offsetHeight;
+
+        var flag=false;
+
+        btn.onclick=function(){
+            if(flag){
+                menu.style.height=menuH+"px";
+                btn.classList.remove("active");
+                flag=false;
+            }else{
+                menu.style.height=menulisH+"px";
+                btn.classList.add("active");
+                flag=true;
+            }
+        }
+
+        state.onclick=function(){
+            asideWrap.classList.add("show");
+            mark.classList.add("show");
+        }
+        mark.onclick=function(){
+            asideWrap.classList.remove("show");
+            mark.classList.remove("show");
+        }
+    </script>
+    
+</body>
+</html>

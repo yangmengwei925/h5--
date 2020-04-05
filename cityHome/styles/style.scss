@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+@import "../../libs/common.scss";
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size:14px;
+}
+
+header,.cityHead{
+    width: 100%;
+    height: pxrem(50px);
+    display: flex;
+    justify-content: center;
+    padding:0 pxrem(10px);
+    background:#46d264;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    span.addres,span.close{
+        position: absolute;
+        left:10px;
+    }
+    h2{
+        font-size: 16px;
+    }
+}
+
+main{
+    flex:1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .banner{
+        width: 100%;
+        height: auto;
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .menu-wrap{
+        width: 100%;
+        padding: 0 10px;
+        position: relative;
+        .loding{
+            width: pxrem(50px);
+            height: pxrem(50px);
+            position: absolute;
+            left:50%;
+            bottom:pxrem(-51px);
+            transform:translate(-50%,0) rotateX(180deg);
+            transition: .6s;
+            img{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .loding.active{
+            transform:translate(-50%,0) rotateX(0deg);
+        }
+
+        ul{
+            width: 100%;
+            height: auto;
+
+            dl{
+                width: 100%;
+                height: auto;
+                display:flex;
+                font-size: 12px;
+                margin-top:10px;
+                padding-bottom:6px;
+                border-bottom:solid 1px #ccc;
+                
+                dt{
+                    width: pxrem(100px);
+                    height: pxrem(120px);
+                    margin-right: 10px;
+                    flex-shrink: 0;
+
+                    img{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                dd{
+                    width: 65%;
+                    line-height: 24px;
+
+                    p:nth-child(4){
+                      width: 95%;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.city-dialog{
+    width: 100%;
+    height: 100%;
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 99;
+    transform: translate(0,-100%);
+    transition: .6s;
+
+    .search-wrap{
+        width: 100%;
+        height: pxrem(50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom:solid 1px #eee;
+
+        input{
+            border:0;
+            outline: none;
+            width:50%;
+            height: 60%;
+            border:solid 1px #ccc;
+            border-right:0;
+        }
+        .searchBtn{
+            display: block;
+            padding:0 pxrem(5px);
+            height: 60%;
+            border:solid 1px #ccc;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+    .dialog-inner{
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+
+        .dialog-container{
+            width: 100%;
+            height: auto;
+
+            h3{
+                width: 100%;
+                height: pxrem(30px);
+                background: #999;
+                line-height: pxrem(30px);
+                padding-left: pxrem(10px);
+            }
+            p{
+                margin-left: pxrem(10px);
+                height: pxrem(32px);
+                border-bottom: 1px solid #ccc;
+                line-height: pxrem(32px);
+            }
+        };
+
+        .dialog-asideLis{
+            width: pxrem(32px);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            p{
+                width: 100%;
+                background: #fff;
+                padding: pxrem(2px) 0;
+                border-bottom: solid 1px #eee;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
+}

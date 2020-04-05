@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var wrap = document.querySelector(".wrap");
+        var content = document.querySelector(".content");
+        var startX, startY, endx, endy;
+        content.ontouchstart = function (e) {
+            startX = e.touches[0].pageX
+            startY = e.touches[0].pageY
+        }
+        content.ontouchmove = function (e) {
+            endX = e.touches[0].pageX
+            endY = e.touches[0].pageY
+        }
+        content.ontouchend = function (e) {
+            var moveX=endx-startX;
+            console.log(moveX,"moveX")
+            if(moveX<0){
+              content.style.transform=`translate(${-50}px)`  
+            }
+        }
+    </script>
+</body>
+
+</html>

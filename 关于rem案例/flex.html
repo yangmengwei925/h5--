@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹性盒</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 500px;
+            height: 300px;
+            border:solid 1px #ccc;
+            margin: 50px auto;
+            display: flex;
+            /* flex-direction:row; */
+            justify-content: space-between;
+            /* flex-flow: row wrap; */
+            /* align-items: center; */
+            /* flex-wrap: wrap; */
+        }
+        .box p{
+            flex-grow: 1;
+            height: 40px;
+            background: orange;
+            margin-right: 2px;
+            text-align: center;
+            line-height: 40px;
+            
+        }
+        .box p:nth-child(2){
+            /* flex-grow: 8; */
+            width: 200px;
+            flex-shrink: 0;
+            order: 6;
+        }
+        .box p:nth-child(3){
+            order:-1;
+            flex-basis: 40%;
+        }
+        .box p:nth-child(1){
+           order: 3
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <p>首页</p>
+        <p>热门</p>
+        <p>娱乐</p>
+        <!-- <p>首页</p>
+        <p>热门</p>
+        <p>娱乐</p>
+        <p>首页</p>
+        <p>热门</p>
+        <p>娱乐</p>
+        <p>首页</p>
+        <p>热门</p>
+        <p>娱乐</p> -->
+    </div>
+    
+</body>
+</html>

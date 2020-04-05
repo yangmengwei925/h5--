@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+@import "./common.scss";
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;
+}
+
+header{
+    width: 100%;
+    height: pxrem(45px);
+    background:#ccc;
+    padding:0 pxrem(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a{
+        width: pxrem(25px);
+        height: pxrem(25px);
+        background: #999;
+        border-radius: 50%;
+    }
+    h2{
+        font-size: 16px;
+    }
+}
+
+.aside-duce{
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background:#fff;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: .6s;
+}
+.aside-duce.show{
+    transform: translateX(0);
+}
+
+.mark{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background:rgba(0, 0, 0, .5);
+    opacity: 0;
+    z-index: 9;
+    visibility: hidden;
+    transition: .6s;
+}
+.mark.show{
+    opacity:.5;
+    visibility: visible;
+}
+
+main{
+    width: 100%;
+    flex:1;
+    overflow: hidden;
+    position: relative;
+
+    .menu{
+        width: 100%;
+        height: pxrem(65px);
+        overflow: hidden;
+        position: relative;
+        transition: .6s;
+
+        .btn{
+            width: pxrem(35px);
+            height: pxrem(20px);
+            border:solid 1px #ccc;
+            text-align: center;
+            line-height: pxrem(20px);
+            position: absolute;
+            right: 0;
+            bottom:0;
+            transform: rotateX(180deg);
+            transition: .6s;
+        }
+        .btn.active{
+            transform: rotateX(0);
+        }
+
+        ul{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            li{
+                width: 16.6%;
+                height: pxrem(30px);
+                line-height: pxrem(30px);
+            }
+        }
+    }
+}

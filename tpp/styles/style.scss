@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+@import "../../libs/common.scss";
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size:14px;
+}
+
+header{
+    width: 100%;
+    height: pxrem(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:solid 1px #ccc;
+
+    div{
+        flex:1
+    }
+
+    div.head-trans{
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        position: relative;
+        span{
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            position: relative;
+            line-height: pxrem(50px);
+            &.active{
+                color:orange;
+            }
+
+            p.activeLine{
+              position: absolute;
+              width: 100%;
+              border-bottom:solid 2px orange;
+              background:orange;
+              bottom: 0;
+              transition: .5s;
+            }
+        }
+    }
+}
+
+main{
+    width: 100%;
+    flex: 1;
+    position: relative;
+    
+    &.swiper-container{
+      overflow: auto;
+    }
+    .scrollWrap{
+        width: 100%;
+        height: 100%;
+    }
+
+    .hot .swiper-pagination-bullet{
+        background:#fff;
+        opacity: 1;
+    }
+    .hot .swiper-pagination-bullet-active{
+        background:orange
+    }
+    .hotWrap img{
+        display: block;
+        width: 100%;
+        height:auto;
+    }
+
+    .hotList,.timeList{
+        width: 100%;
+        height: auto;
+        
+        dl{
+            width: 95%;
+            margin:pxrem(8px) auto;
+            display: flex;
+
+            
+            dt{
+                width: pxrem(90px);
+                height: pxrem(120px);
+                margin-right:pxrem(10px);
+                img{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.time{
+    width: 100%;
+    height: auto;
+}
+
+.time h3.time-title{
+    height: pxrem(40px);
+    width: 100%;
+    background:#ccc;
+    line-height: pxrem(40px);
+    position: static;
+    left:0;
+    top:0
+}
